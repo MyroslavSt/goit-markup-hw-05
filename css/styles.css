@@ -100,15 +100,6 @@ body {
     gap: 40px;
 }
 
-/* .header-link::after {
-    content: "";
-    width: 65px;
-    height: 4px;
-    background: #404BBF;
-    border-radius: 2px;
-    flex-grow: 1;
-} */
-
 .address-list {
     gap: 40px;
 }
@@ -134,6 +125,25 @@ body {
     line-height: 1.5;
     color: var(--brand-link);
     transition-property: color;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link-after {
+    position: relative;
+}
+
+.link-after::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: var(--brand-hover-focus);
+    border-radius: 2px;
+    transition-property: transform;
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -595,7 +605,8 @@ body {
     height: 100%;
     overflow: auto;
     transform: translate(0, 100%);
-    transition: transform 250ms linear;
+    transition: transform 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     padding-top: 40px;
     padding-right: 32px;
     padding-left: 32px;
@@ -618,4 +629,68 @@ body {
 .img-overlay {
     position: relative;
     overflow: hidden;
+}
+
+
+/* modal window*/
+
+.backdrop {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(46, 47, 66, 0.4);
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.modal {
+    position: absolute;
+    width: 408px;
+    height: 576px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FCFCFC;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #E7E9FC;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+    background: #404BBF;
+}
+
+.modal-close-btn:hover .modal-close-icon,
+.modal-close-btn:focus .modal-close-icon {
+    fill: #FFFFFF;
+}
+
+.modal-close-icon {
+    width: 8px;
+    height: 8px;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
