@@ -420,7 +420,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition-property: border-color color;
+    transition-property: border-color, color;
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -619,13 +619,13 @@ body {
     background-color: rgb(77, 90, 229);
 }
 
-.item:hover .overlay,
-.item:focus .overlay {
-    transform: translate(0, 0);
-}
-
 .overlay-position {
     display: block;
+}
+
+.overlay-position:hover .overlay,
+.overlay-position:focus .overlay {
+    transform: translate(0, 0);
 }
 
 .img-overlay {
